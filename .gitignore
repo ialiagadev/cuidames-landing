@@ -1,0 +1,9 @@
+# dependencias (por si más adelante añades un framework)
+node_modules/
+dist/
+.DS_Store
+
+# entornos / secretos
+.env
+.env.local
+.vercel
