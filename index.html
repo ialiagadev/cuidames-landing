@@ -33,9 +33,7 @@
   a.footlink { color: #55645A; }
   a.footlink:hover { color: #C75B33; }
 
-  /* huecos de foto (sustituir por imágenes reales cuando las tengas) */
-  .photo-slot { width: 100%; height: 100%; background: linear-gradient(135deg, #E7C9A9 0%, #D3A87E 55%, #C98F63 100%); }
-  .photo-slot--family { background: linear-gradient(150deg, #2E4A3C 0%, #3E5C4B 50%, #56705E 100%); border-radius: 20px; height: 420px; }
+  .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   @media (max-width: 1020px) {
     #hero-grid, #proposito-grid, .beneficio-grid { grid-template-columns: 1fr !important; }
@@ -88,7 +86,7 @@
     <div style="position: relative; padding: 0 12px 96px 0">
       <div style="background: #14181C; border-radius: 20px; padding: 12px; box-shadow: 0 34px 70px -24px rgba(32,54,44,.4)">
         <div style="position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; background: #ECE8DF">
-          <div style="position: absolute; inset: 0"><div class="photo-slot"></div></div>
+          <img class="photo-img" src="assets/foto-hero.svg" alt="Foto que la familia envió a la tele" style="position: absolute; inset: 0">
           <div style="position: absolute; right: 14px; top: 12px; display: flex; align-items: center; gap: 8px; background: rgba(12,15,18,.72); color: #F2EFE7; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px; pointer-events: none; backdrop-filter: blur(4px)">
             <span style="width: 8px; height: 8px; border-radius: 50%; background: #E9B44C; animation: pulseDot 1.6s ease-in-out infinite"></span>
             Foto nueva de Lucía
@@ -224,7 +222,7 @@
       <div>
         <div style="background: #14181C; border-radius: 20px; padding: 12px; box-shadow: 0 30px 60px -20px rgba(32,54,44,.38)">
           <div style="position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; background: #ECE8DF">
-            <div style="position: absolute; inset: 0"><div class="photo-slot"></div></div>
+            <img class="photo-img" src="assets/foto-recuerdos.svg" alt="Álbum de fotos de la familia en la tele" style="position: absolute; inset: 0">
             <div style="position: absolute; right: 14px; top: 12px; background: rgba(12,15,18,.72); color: #F2EFE7; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px; pointer-events: none; backdrop-filter: blur(4px)">Álbum de la familia · 3 fotos nuevas</div>
             <div style="position: absolute; right: 14px; bottom: 14px; background: rgba(12,15,18,.72); color: #F2EFE7; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; pointer-events: none; backdrop-filter: blur(4px)">
               <div style="width: 34px; height: 34px; border-radius: 10px; background: #E9B44C; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; color: #14181C; font-size: 15px">9</div>
@@ -276,7 +274,7 @@
         <p style="font-size: 17px; line-height: 1.65; color: #C9D2CB; margin: 0; max-width: 54ch; text-wrap: pretty">No vendemos tecnología, ni televisiones, ni videollamadas. Vendemos tranquilidad, cercanía y presencia. Empezamos por la pantalla que tus padres ya conocen —su televisión— para construir una forma de cuidar más cálida y más humana. Y no pararemos ahí.</p>
         <p style="font-size: 15px; font-weight: 600; color: #E9B44C; margin: 0">Hacemos fácil cuidar de quienes nos cuidaron.</p>
       </div>
-      <div style="height: 420px"><div class="photo-slot photo-slot--family"></div></div>
+      <div style="height: 420px; border-radius: 20px; overflow: hidden"><img class="photo-img" src="assets/foto-familia.svg" alt="Abuelo y nieta en un banco al atardecer"></div>
     </div>
   </section>
 
@@ -307,31 +305,48 @@
 </footer>
 
 <script>
-  // === Lista de espera ===
-  // Pega aquí tu endpoint de Formspree (https://formspree.io) para recibir los correos.
-  // Si lo dejas vacío, el formulario solo muestra el mensaje de gracias (modo demo).
-  const FORMSPREE_ENDPOINT = "";
+  // === Lista de espera → Supabase (proyecto cuidames) ===
+  // La clave anon solo permite APUNTARSE; los correos no se pueden leer con ella (RLS insert-only).
+  const SUPABASE_URL = "https://vqrwqcsxdsfekrxbzqxb.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxcndxY3N4ZHNmZWtyeGJ6cXhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzODAxNjQsImV4cCI6MjA5OTk1NjE2NH0.2qd6c2oIzQeyz_sQl5R6ImduyXaeZAD22-8gbfY0fuc";
 
-  document.querySelectorAll("form.signup").forEach((form) => {
+  document.querySelectorAll("form.signup").forEach((form, i) => {
     const btn = form.querySelector("button");
     const note = form.parentElement.querySelector(".form-note");
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const input = form.querySelector('input[type="email"]');
-      const email = (input.value || "").trim();
+      const email = (input.value || "").trim().toLowerCase();
       if (!email) return;
+      btn.disabled = true;
       try {
-        if (FORMSPREE_ENDPOINT) {
-          await fetch(FORMSPREE_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({ email }),
-          });
+        const r = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: "POST",
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({ email, source: i === 0 ? "landing-hero" : "landing-final" }),
+        });
+        if (r.status === 201) {
+          form.reset();
+          btn.textContent = "¡Apuntado!";
+          if (note) note.textContent = "Gracias. Te escribiremos en cuanto puedas probarlo.";
+        } else if (r.status === 409) {
+          form.reset();
+          btn.textContent = "¡Apuntado!";
+          if (note) note.textContent = "Ya estabas en la lista. Te avisaremos igualmente.";
+        } else {
+          throw new Error("HTTP " + r.status);
         }
-      } catch (_) {}
-      form.reset();
-      btn.textContent = "¡Apuntado!";
-      if (note) note.textContent = "Gracias. Te escribiremos en cuanto puedas probarlo.";
+      } catch (_) {
+        if (note) note.textContent = "No se pudo enviar. Prueba otra vez en un momento.";
+        btn.disabled = false;
+        return;
+      }
+      btn.disabled = false;
     });
   });
 </script>
