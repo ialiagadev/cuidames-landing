@@ -328,7 +328,7 @@
             "Content-Type": "application/json",
             Prefer: "return=minimal",
           },
-          body: JSON.stringify({ email, source: i === 0 ? "landing-hero" : "landing-final" }),
+          body: JSON.stringify({ email, source: `${new URLSearchParams(location.search).get("utm_source") || "directo"}-${i === 0 ? "hero" : "final"}` }),
         });
         if (r.status === 201) {
           form.reset();
