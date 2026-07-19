@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#f6f5ec"/>
+  <rect width="64" height="64" rx="14" fill="#F7F2E9"/>
   <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
-        font-family="Quicksand, Nunito, sans-serif" font-weight="700" font-size="40" fill="#2e4a33">C</text>
+        font-family="Bricolage Grotesque, Figtree, sans-serif" font-weight="700" font-size="40" fill="#20362C">C</text>
 </svg>
