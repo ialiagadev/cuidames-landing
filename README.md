@@ -22,6 +22,19 @@ leer** con ella). Duplicados → mensaje "ya estabas en la lista".
 
 **Ver los apuntados:** Supabase → Table Editor → `waitlist` (o con la clave service_role).
 
+## Píxel de Meta (para la campaña de ads)
+
+Ya está instalado y **desactivado por defecto**. Para activarlo cuando lances la campaña:
+
+1. Crea la cuenta en [business.facebook.com](https://business.facebook.com) → Events Manager → **Crear píxel** → copia el ID (solo números).
+2. En `index.html`, busca `const META_PIXEL_ID = "";` y pega el ID.
+3. Push → Vercel despliega. Listo.
+
+Cómo funciona:
+- **Sin ID** → no se carga nada ni aparece el banner (cero cookies).
+- **Con ID** → aparece el banner de cookies (RGPD): el píxel **solo se carga si el visitante acepta**.
+- Al apuntarse alguien a la lista se dispara el evento **`Lead`** → configura la campaña optimizada a "Clientes potenciales (Lead)" para que Meta busque gente que se registre, no solo que haga clic.
+
 ## Deploy
 
 Conectada a Vercel: cada push a `main` redespliega automáticamente.

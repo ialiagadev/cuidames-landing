@@ -35,6 +35,21 @@
 
   .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+  /* banner de cookies (solo aparece si hay píxel configurado) */
+  #cookie-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 100;
+    max-width: 560px; margin: 0 auto; background: #FFFFFF; border: 1px solid rgba(32,54,44,.14);
+    border-radius: 16px; padding: 18px 20px; box-shadow: 0 20px 50px -12px rgba(32,54,44,.35);
+    display: none; }
+  #cookie-banner.show { display: block; }
+  #cookie-banner p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: #55645A; }
+  #cookie-banner .cb-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  #cookie-banner button { font-family: 'Figtree', sans-serif; font-size: 14px; font-weight: 600;
+    border-radius: 999px; padding: 10px 20px; cursor: pointer; border: none; }
+  #cookie-accept { background: #20362C; color: #FBF8F2; }
+  #cookie-accept:hover { background: #2E4A3C; }
+  #cookie-reject { background: transparent; color: #55645A; border: 1.5px solid #D9D0BC !important; }
+  #cookie-reject:hover { color: #20362C; }
+
   @media (max-width: 1020px) {
     #hero-grid, #proposito-grid, .beneficio-grid { grid-template-columns: 1fr !important; }
     #problema-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -304,11 +319,50 @@
   </div>
 </footer>
 
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p><strong style="color:#20362C">🍪 Cookies de medición.</strong> Usamos el píxel de Meta para saber si nuestros anuncios funcionan. Solo se activa si aceptas. Sin más rastreo, sin vender datos.</p>
+  <div class="cb-row">
+    <button id="cookie-accept">Aceptar</button>
+    <button id="cookie-reject">Rechazar</button>
+  </div>
+</div>
+
 <script>
   // === Lista de espera → Supabase (proyecto cuidames) ===
   // La clave anon solo permite APUNTARSE; los correos no se pueden leer con ella (RLS insert-only).
   const SUPABASE_URL = "https://vqrwqcsxdsfekrxbzqxb.supabase.co";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZxcndxY3N4ZHNmZWtyeGJ6cXhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzODAxNjQsImV4cCI6MjA5OTk1NjE2NH0.2qd6c2oIzQeyz_sQl5R6ImduyXaeZAD22-8gbfY0fuc";
+
+  // === Píxel de Meta (para la campaña de ads) ===
+  // 1. Crea el píxel en Meta Events Manager (business.facebook.com → Eventos → Píxeles).
+  // 2. Pega aquí su ID (solo números). Sin ID, no se carga nada ni aparece el banner.
+  const META_PIXEL_ID = "";
+
+  const CONSENT_KEY = "cuidames_cookies";
+  function loadMetaPixel() {
+    if (!META_PIXEL_ID || window.fbq) return;
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", META_PIXEL_ID);
+    fbq("track", "PageView");
+  }
+  (function initConsent() {
+    if (!META_PIXEL_ID) return; // sin píxel configurado no hay cookies → no hace falta banner
+    const choice = localStorage.getItem(CONSENT_KEY);
+    if (choice === "accepted") { loadMetaPixel(); return; }
+    if (choice === "rejected") return;
+    const banner = document.getElementById("cookie-banner");
+    banner.classList.add("show");
+    document.getElementById("cookie-accept").onclick = () => {
+      localStorage.setItem(CONSENT_KEY, "accepted"); banner.classList.remove("show"); loadMetaPixel();
+    };
+    document.getElementById("cookie-reject").onclick = () => {
+      localStorage.setItem(CONSENT_KEY, "rejected"); banner.classList.remove("show");
+    };
+  })();
 
   document.querySelectorAll("form.signup").forEach((form, i) => {
     const btn = form.querySelector("button");
@@ -334,6 +388,7 @@
           form.reset();
           btn.textContent = "¡Apuntado!";
           if (note) note.textContent = "Gracias. Te escribiremos en cuanto puedas probarlo.";
+          if (window.fbq) fbq("track", "Lead"); // conversión para Meta Ads
         } else if (r.status === 409) {
           form.reset();
           btn.textContent = "¡Apuntado!";
