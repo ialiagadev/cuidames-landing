@@ -3,12 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cuidames — Cuida a los tuyos, aunque vivas lejos</title>
-<meta name="description" content="Arregla su televisión desde tu móvil, aparece en su pantalla con una videollamada y envíale fotos y recordatorios que se muestran solos. Ellos no aprenden nada nuevo. Tú dejas de preocuparte.">
-<meta property="og:title" content="Cuidames — Su tele de siempre. Tú, más cerca que nunca.">
-<meta property="og:description" content="Arregla su tele desde tu móvil, videollamadas que aparecen solas en su pantalla, fotos y recordatorios directos a su tele.">
+<title>CuidaMés — Cuida a tus padres a distancia desde su tele</title>
+<meta name="description" content="CuidaMés convierte la tele de tus padres mayores en apoyo remoto: videollamadas que aparecen solas, fotos y recordatorios. Sin que aprendan nada.">
+<link rel="canonical" href="https://www.cuidames.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="alternate" hreflang="es-ES" href="https://www.cuidames.com/">
+<link rel="alternate" hreflang="x-default" href="https://www.cuidames.com/">
+<meta property="og:title" content="CuidaMés — Su tele de siempre. Tú, más cerca que nunca.">
+<meta property="og:description" content="Convierte el televisor de siempre de tus padres mayores en apoyo remoto para la familia: videollamadas que aparecen solas, arreglar su tele desde tu móvil, fotos y recordatorios. Sin que el mayor aprenda ni instale nada.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cuidames.com/">
+<meta property="og:site_name" content="CuidaMés">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.cuidames.com/assets/foto-hero.jpg">
+<meta property="og:image:alt" content="CuidaMés: videollamada de la familia que aparece sola en la tele de una persona mayor">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CuidaMés — Su tele de siempre. Tú, más cerca que nunca.">
+<meta name="twitter:description" content="Convierte la tele de tus padres mayores en apoyo remoto para la familia. Sin que aprendan ni instalen nada.">
+<meta name="twitter:image" content="https://www.cuidames.com/assets/foto-hero.jpg">
+<meta name="theme-color" content="#F7F2E9">
+<meta name="geo.region" content="ES">
+<meta name="geo.placename" content="España">
+<meta name="author" content="CuidaMés">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CuidaMés","alternateName":["CuidaMes","Cuidames"],"url":"https://www.cuidames.com/","logo":"https://www.cuidames.com/assets/logo.jpeg","image":"https://www.cuidames.com/assets/foto-hero.jpg","email":"hola@cuidames.com","description":"CuidaMés es un servicio español que ayuda a las familias a cuidar y acompañar a distancia a sus padres o abuelos mayores, para que sigan viviendo en su casa con autonomía. Convierte el televisor de siempre en apoyo remoto: videollamadas que aparecen solas en la tele, arreglar su televisor desde el móvil, y fotos y recordatorios en pantalla, sin que el mayor aprenda ni instale nada.","foundingLocation":{"@type":"Place","name":"Elche, España"},"areaServed":{"@type":"Country","name":"España"},"knowsLanguage":"es-ES"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CuidaMés","url":"https://www.cuidames.com/","inLanguage":"es-ES","description":"CuidaMés convierte el televisor de siempre de una persona mayor en apoyo remoto para su familia: videollamadas que aparecen solas, arreglar su tele desde el móvil, fotos y recordatorios. Sin que el mayor aprenda ni instale nada.","publisher":{"@type":"Organization","name":"CuidaMés","url":"https://www.cuidames.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"CuidaMés","category":"Tecnología de apoyo para personas mayores","description":"CuidaMés convierte el televisor de siempre de una persona mayor en apoyo remoto para su familia: videollamadas que aparecen solas en la tele, arreglar su televisor desde el móvil, y fotos y recordatorios en pantalla. El mayor no aprende ni instala nada; la familia lo gestiona todo desde su móvil.","brand":{"@type":"Brand","name":"CuidaMés"},"audience":{"@type":"PeopleAudience","suggestedMinAge":65},"url":"https://www.cuidames.com/","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","priceCurrency":"EUR","areaServed":"ES","url":"https://www.cuidames.com/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Figtree:wght@300..700&display=swap" rel="stylesheet">
@@ -34,6 +54,14 @@
   a.footlink:hover { color: #C75B33; }
 
   .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* FAQ (acordeón accesible con details/summary) */
+  .faq-item { background: #F7F2E9; border-radius: 16px; border: 1px solid rgba(32,54,44,.07); }
+  .faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; font-size: 17px; font-weight: 600; color: #20362C; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 400; color: #C75B33; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { margin: 0; padding: 0 24px 22px; font-size: 15.5px; line-height: 1.65; color: #55645A; max-width: 72ch; }
 
   /* banner de cookies (solo aparece si hay píxel configurado) */
   #cookie-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 100;
@@ -79,6 +107,7 @@
       <a class="navlink" href="#cerca">Videollamadas</a>
       <a class="navlink" href="#presencia">Fotos y recordatorios</a>
       <a class="navlink" href="#proposito">Por qué</a>
+      <a class="navlink" href="#faq">Preguntas</a>
       <a class="btn-pill-terra" href="#lista">Apúntate</a>
     </div>
   </nav>
@@ -93,7 +122,7 @@
         Muy pronto · lista de espera abierta
       </div>
       <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 640; font-size: 58px; line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-wrap: pretty">Su tele de siempre. Tú, más cerca que nunca.</h1>
-      <p style="font-size: 19px; line-height: 1.6; color: #55645A; margin: 0; max-width: 50ch; text-wrap: pretty"><strong style="color: #20362C">Cuidames ayuda a las familias a cuidar de sus mayores desde el móvil.</strong> Arréglales la televisión a distancia, aparece en su pantalla con una videollamada y envíales fotos y recordatorios que se muestran solos. Ellos no aprenden nada nuevo; tú dejas de preocuparte.</p>
+      <p style="font-size: 19px; line-height: 1.6; color: #55645A; margin: 0; max-width: 50ch; text-wrap: pretty"><strong style="color: #20362C">CuidaMés ayuda a las familias a cuidar de sus mayores desde el móvil.</strong> Arréglales la televisión a distancia, aparece en su pantalla con una videollamada y envíales fotos y recordatorios que se muestran solos. Ellos no aprenden nada nuevo; tú dejas de preocuparte.</p>
       <form class="signup" style="display: flex; gap: 10px; max-width: 480px">
         <label class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tu correo electrónico</label>
         <input class="email-input" type="email" required placeholder="Tu correo electrónico">
@@ -297,9 +326,33 @@
     </div>
   </section>
 
+  <!-- QUÉ ES + FAQ -->
+  <section id="faq" style="background: #FFFFFF; border-top: 1px solid rgba(32,54,44,.07)">
+    <div style="max-width: 900px; margin: 0 auto; padding: 92px 32px; display: flex; flex-direction: column; gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #C75B33">Qué es CuidaMés</div>
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 620; font-size: 40px; line-height: 1.08; letter-spacing: -0.015em; margin: 0; text-wrap: pretty">Preguntas frecuentes</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: #55645A; margin: 6px 0 0; max-width: 66ch; text-wrap: pretty"><strong style="color: #20362C">CuidaMés es un servicio español que ayuda a las familias a cuidar y acompañar a distancia a sus padres o abuelos mayores, para que sigan viviendo en su casa con autonomía y la familia esté tranquila.</strong> Convierte la tele de siempre en una ventana con la familia: videollamadas que aparecen solas, fotos y recordatorios en pantalla, y la posibilidad de arreglar su televisor desde tu móvil — sin que la persona mayor aprenda ni instale nada.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <details class="faq-item"><summary>¿Qué es CuidaMés?</summary><p>CuidaMés es un servicio español que convierte el televisor de siempre de una persona mayor en un punto de contacto con su familia. En su tele aparecen solas las videollamadas de sus hijos, además de fotos y recordatorios, y la familia puede arreglar la tele desde el móvil. El mayor no tiene que aprender ni instalar nada: usa su televisión como siempre.</p></details>
+        <details class="faq-item"><summary>¿Cómo funciona CuidaMés?</summary><p>Se conecta un pequeño accesorio a la televisión y a internet en una tarde. A partir de ahí, cuando un hijo llama, la videollamada aparece a pantalla completa en la tele del mayor sin que tenga que tocar nada. La familia gestiona todo (llamadas, fotos, recordatorios e incluso poner un canal) desde una app en su propio móvil.</p></details>
+        <details class="faq-item"><summary>¿Mi padre o mi madre tiene que aprender a usar algo nuevo?</summary><p>No. Esa es la idea central de CuidaMés: la persona mayor sigue viendo su televisión exactamente igual que siempre. No hay menús nuevos que memorizar, ni botones que aprender, ni móvil que manejar. Todo el trabajo lo hace la familia desde su teléfono.</p></details>
+        <details class="faq-item"><summary>¿Necesita instalar una aplicación o cambiar de televisor?</summary><p>El mayor no instala ninguna app ni cambia de televisor: CuidaMés se añade a la tele que ya tiene. Quien instala la app es el hijo o la hija que cuida, en su propio móvil, para gestionar las llamadas, las fotos y los recordatorios.</p></details>
+        <details class="faq-item"><summary>¿Funciona con cualquier televisión?</summary><p>Funciona con prácticamente cualquier televisor que tenga una entrada HDMI y acceso a internet en casa. No hace falta que sea una smart TV moderna ni cambiar de aparato. Si tienes dudas con un modelo concreto, podrás consultarlo antes de recibirlo.</p></details>
+        <details class="faq-item"><summary>¿Cómo aparece la videollamada sola en su pantalla?</summary><p>Cuando la familia inicia una llamada, CuidaMés enciende la videollamada a pantalla completa en la tele del mayor de forma automática, sin que tenga que descolgar ni pulsar nada. La persona mayor solo ve aparecer la cara de su hijo o de su nieto en la pantalla grande del salón.</p></details>
+        <details class="faq-item"><summary>¿Cuánto cuesta CuidaMés?</summary><p>CuidaMés está en fase de prelanzamiento y todavía no tiene precio público. Ahora mismo puedes apuntarte gratis a la lista de espera para ser de los primeros en probarlo y conocer las condiciones de lanzamiento antes que nadie. Apuntarte no supone ningún compromiso.</p></details>
+        <details class="faq-item"><summary>¿Es una cámara de vigilancia? ¿Puedo ver lo que hace en casa?</summary><p>No. CuidaMés no es una cámara de vigilancia y no permite observar a la persona mayor sin que lo sepa. La cámara solo se activa durante las videollamadas que la familia y el mayor comparten, igual que en una llamada normal. La idea es acompañar y estar cerca respetando su intimidad, no controlar.</p></details>
+        <details class="faq-item"><summary>¿En qué se diferencia de la teleasistencia o del botón rojo?</summary><p>La teleasistencia clásica está pensada para emergencias: un botón que avisa a una central cuando algo va mal. CuidaMés está pensado para el día a día: verse y hablar por la tele, compartir fotos y recordar cosas, aunque no pase nada malo. No sustituye a un servicio de emergencias; cubre la parte de compañía y cercanía que ese botón no da.</p></details>
+        <details class="faq-item"><summary>¿En qué se diferencia de una tablet, un Echo Show o WhatsApp?</summary><p>Con una tablet, un altavoz con pantalla o WhatsApp, la persona mayor tiene que aprender a manejar algo nuevo: desbloquear, buscar contactos o dar comandos de voz. Con CuidaMés no aprende nada, porque todo ocurre en la tele que ya usa y es la familia quien controla la experiencia desde su móvil. Es la diferencia entre pedirle que se adapte a la tecnología y llevar la tecnología a su terreno.</p></details>
+      </div>
+    </div>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es CuidaMés?","acceptedAnswer":{"@type":"Answer","text":"CuidaMés es un servicio español que convierte el televisor de siempre de una persona mayor en un punto de contacto con su familia. En su tele aparecen solas las videollamadas de sus hijos, además de fotos y recordatorios, y la familia puede arreglar la tele desde el móvil. El mayor no tiene que aprender ni instalar nada: usa su televisión como siempre."}},{"@type":"Question","name":"¿Cómo funciona CuidaMés?","acceptedAnswer":{"@type":"Answer","text":"Se conecta un pequeño accesorio a la televisión y a internet en una tarde. A partir de ahí, cuando un hijo llama, la videollamada aparece a pantalla completa en la tele del mayor sin que tenga que tocar nada. La familia gestiona todo (llamadas, fotos, recordatorios e incluso poner un canal) desde una app en su propio móvil."}},{"@type":"Question","name":"¿Mi padre o mi madre tiene que aprender a usar algo nuevo?","acceptedAnswer":{"@type":"Answer","text":"No. Esa es la idea central de CuidaMés: la persona mayor sigue viendo su televisión exactamente igual que siempre. No hay menús nuevos que memorizar, ni botones que aprender, ni móvil que manejar. Todo el trabajo lo hace la familia desde su teléfono."}},{"@type":"Question","name":"¿Necesita instalar una aplicación o cambiar de televisor?","acceptedAnswer":{"@type":"Answer","text":"El mayor no instala ninguna app ni cambia de televisor: CuidaMés se añade a la tele que ya tiene. Quien instala la app es el hijo o la hija que cuida, en su propio móvil, para gestionar las llamadas, las fotos y los recordatorios."}},{"@type":"Question","name":"¿Funciona con cualquier televisión?","acceptedAnswer":{"@type":"Answer","text":"Funciona con prácticamente cualquier televisor que tenga una entrada HDMI y acceso a internet en casa. No hace falta que sea una smart TV moderna ni cambiar de aparato. Si tienes dudas con un modelo concreto, podrás consultarlo antes de recibirlo."}},{"@type":"Question","name":"¿Cómo aparece la videollamada sola en su pantalla?","acceptedAnswer":{"@type":"Answer","text":"Cuando la familia inicia una llamada, CuidaMés enciende la videollamada a pantalla completa en la tele del mayor de forma automática, sin que tenga que descolgar ni pulsar nada. La persona mayor solo ve aparecer la cara de su hijo o de su nieto en la pantalla grande del salón."}},{"@type":"Question","name":"¿Cuánto cuesta CuidaMés?","acceptedAnswer":{"@type":"Answer","text":"CuidaMés está en fase de prelanzamiento y todavía no tiene precio público. Ahora mismo puedes apuntarte gratis a la lista de espera para ser de los primeros en probarlo y conocer las condiciones de lanzamiento antes que nadie. Apuntarte no supone ningún compromiso."}},{"@type":"Question","name":"¿Es una cámara de vigilancia? ¿Puedo ver lo que hace en casa?","acceptedAnswer":{"@type":"Answer","text":"No. CuidaMés no es una cámara de vigilancia y no permite observar a la persona mayor sin que lo sepa. La cámara solo se activa durante las videollamadas que la familia y el mayor comparten, igual que en una llamada normal. La idea es acompañar y estar cerca respetando su intimidad, no controlar."}},{"@type":"Question","name":"¿En qué se diferencia de la teleasistencia o del botón rojo?","acceptedAnswer":{"@type":"Answer","text":"La teleasistencia clásica está pensada para emergencias: un botón que avisa a una central cuando algo va mal. CuidaMés está pensado para el día a día: verse y hablar por la tele, compartir fotos y recordar cosas, aunque no pase nada malo. No sustituye a un servicio de emergencias; cubre la parte de compañía y cercanía que ese botón no da."}},{"@type":"Question","name":"¿En qué se diferencia de una tablet, un Echo Show o WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Con una tablet, un altavoz con pantalla o WhatsApp, la persona mayor tiene que aprender a manejar algo nuevo: desbloquear, buscar contactos o dar comandos de voz. Con CuidaMés no aprende nada, porque todo ocurre en la tele que ya usa y es la familia quien controla la experiencia desde su móvil. Es la diferencia entre pedirle que se adapte a la tecnología y llevar la tecnología a su terreno."}}]}</script>
+  </section>
+
   <!-- CTA FINAL -->
   <section id="lista" style="max-width: 820px; margin: 0 auto; padding: 104px 32px; text-align: center; display: flex; flex-direction: column; gap: 22px; align-items: center">
-    <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 640; font-size: 44px; line-height: 1.06; letter-spacing: -0.02em; margin: 0; text-wrap: pretty">Sé de los primeros en probar Cuidames</h2>
+    <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 640; font-size: 44px; line-height: 1.06; letter-spacing: -0.02em; margin: 0; text-wrap: pretty">Sé de los primeros en probar CuidaMés</h2>
     <p style="font-size: 17px; line-height: 1.6; color: #55645A; margin: 0; max-width: 52ch">Aún lo estamos construyendo. Apúntate y te avisaremos en cuanto puedas probarlo con tu familia.</p>
     <form class="signup" style="display: flex; gap: 10px; width: 100%; max-width: 480px">
       <label style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tu correo electrónico</label>
@@ -317,8 +370,8 @@
       <span style="font-size: 14px; color: #8B968C">Hacemos fácil cuidar de quienes nos cuidaron.</span>
     </div>
     <div style="display: flex; align-items: center; gap: 20px; font-size: 14px; color: #8B968C">
-      <a class="footlink" href="mailto:hola@cuidames.es">hola@cuidames.es</a>
-      <span>© 2026 Cuidames</span>
+      <a class="footlink" href="mailto:hola@cuidames.com">hola@cuidames.com</a>
+      <span>© 2026 CuidaMés · cuidames.com</span>
     </div>
   </div>
 </footer>
